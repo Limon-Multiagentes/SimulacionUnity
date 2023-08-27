@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638287000393481697
-    m_Hash: 2950797906
+      ticks: 638287020154888004
+    m_Hash: 231795447
   m_LockFileStatus:
     m_FilePath: C:/Users/USUARIO DELL/Documents/GitHub/SimulacionUnity/Unity/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638287000393581979
-    m_Hash: 1567452147
+      ticks: 638287020154974766
+    m_Hash: 3096241
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -72,6 +72,123 @@ m_ResolvedPackages:
     path: 
   unityLifecycle:
     version: 1.0.0
+    nextVersion: 
+- packageId: com.unity.2d.tilemap.extras@2.2.6
+  testable: 0
+  isDirectDependency: 1
+  version: 2.2.6
+  source: 1
+  resolvedPath: C:\Users\USUARIO DELL\Documents\GitHub\SimulacionUnity\Unity\Library\PackageCache\com.unity.2d.tilemap.extras@2.2.6
+  assetPath: Packages/com.unity.2d.tilemap.extras
+  name: com.unity.2d.tilemap.extras
+  displayName: 2D Tilemap Extras
+  author:
+    name: 
+    email: 
+    url: 
+  category: 2D
+  type: assets
+  description: '2D Tilemap Extras is a package that contains extra scripts for use
+    with 2D Tilemap features in Unity. These include custom Tiles and Brushes for
+    the Tilemap feature.
+
+
+    The following are included in the package:
+
+    Brushes:
+    GameObject Brush, Group Brush, Line Brush, Random Brush
+
+    Tiles: Animated
+    Tile, Rule Tile, Rule Override Tile
+
+    Other: Grid Information, Custom Rules
+    for Rule Tile'
+  status: 0
+  errors: []
+  versions:
+    all:
+    - 1.5.0-preview
+    - 1.6.0-preview.1
+    - 1.6.1-preview
+    - 1.6.2-preview
+    - 1.6.3-preview
+    - 1.6.4-preview
+    - 1.7.0-preview
+    - 1.8.0-preview
+    - 1.8.1-preview
+    - 1.8.2-preview
+    - 1.8.3-preview
+    - 1.8.4-preview
+    - 2.0.0-pre.1
+    - 2.0.0-pre.2
+    - 2.0.0
+    - 2.2.0
+    - 2.2.1
+    - 2.2.2
+    - 2.2.3
+    - 2.2.4
+    - 2.2.5
+    - 2.2.6
+    - 3.0.0
+    - 3.0.1
+    - 3.0.2
+    - 3.0.3
+    - 3.1.0
+    - 3.1.1
+    - 4.0.0-pre.1
+    - 4.0.0-pre.2
+    - 4.0.0-pre.3
+    - 4.0.0
+    - 4.0.1
+    compatible:
+    - 2.2.6
+    verified: 2.2.6
+  dependencies:
+  - name: com.unity.modules.tilemap
+    version: 1.0.0
+  - name: com.unity.2d.tilemap
+    version: 1.0.0
+  - name: com.unity.ugui
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.modules.tilemap
+    version: 1.0.0
+  - name: com.unity.modules.physics2d
+    version: 1.0.0
+  - name: com.unity.2d.tilemap
+    version: 1.0.0
+  - name: com.unity.ugui
+    version: 1.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  keywords:
+  - 2d
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638234725840000000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.2d.tilemap.extras@2.2/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/2d-extras.git
+    revision: 0bf9be926d2a993b13474925561239fa0d83ef5a
+    path: 
+  unityLifecycle:
+    version: 2.2.6
     nextVersion: 
 - packageId: com.unity.collab-proxy@2.0.5
   testable: 0
