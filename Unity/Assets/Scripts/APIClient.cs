@@ -71,6 +71,7 @@ public class APIClient : MonoBehaviour
             paquete.id = info[i]["id"];
             paquete.x= info[i]["x"];
             paquete.y = info[i]["y"];
+            paquete.surface = info[i]["surface"];
             paquetes.Add(paquete);
         }
 
@@ -110,8 +111,8 @@ public class APIClient : MonoBehaviour
 
         ParameterModel pm = new ParameterModel();
         pm.numRobots = 4;
-        pm.tasaEntrada = 10;
-        pm.tasaSalida = 30;
+        pm.tasaEntrada = 5;
+        pm.tasaSalida = 20;
 
         string json = JsonUtility.ToJson(pm);
         UnityWebRequest req = new UnityWebRequest(url, "POST");
