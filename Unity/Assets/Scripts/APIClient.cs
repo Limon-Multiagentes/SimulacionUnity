@@ -7,74 +7,19 @@ using UnityEngine.UI;
 using System;
 using System.Threading;
 
-[System.Serializable]
-public class RobotModel
-{
-    public string action;
-    public float carga;
-    public int id;
-    public float x;
-    public float y;
-}
-
-[System.Serializable]
-public class PaqueteModel
-{
-    public int id;
-    public float peso;
-    public float x;
-    public float y;
-}
-
-[System.Serializable]
-public class DataModel
-{
-    public List<int> ciclosCarga;
-    public List<int> movimientos;
-    public List<int> paquetesEnviados;
-    public List<int> paquetesRecibidos;
-}
-
-[System.Serializable]
-public class ParameterModel
-{
-    public int numRobots;
-    public int tasaEntrada;
-    public int tasaSalida;
-}
 
 
 public class APIClient : MonoBehaviour
 {
+    
     private readonly string baseURL = "http://localhost:4000/";
     public List<RobotModel> robotData;
     public List<PaqueteModel> paqueteData;
     public DataModel data;
     public int count = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(Init());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            StartCoroutine(Step());
-        }
-
-        if (Input.GetKeyUp(KeyCode.G)){
-            StartCoroutine(GetRobots());
-        }
-
-    }
-
     //Get robots data
-    IEnumerator GetRobots()
+    public IEnumerator GetRobots()
     {
         string url = baseURL + "robots";
         UnityWebRequest robotRequest = UnityWebRequest.Get(url);
@@ -100,10 +45,13 @@ public class APIClient : MonoBehaviour
         }
 
         robotData = robots;
+        robotRequest.Dispose();
+        yield return null;
+
     }
 
     //Get packets data
-    IEnumerator GetPaquetes()
+    public IEnumerator GetPaquetes()
     {
         string url = baseURL + "paquetes";
         UnityWebRequest request = UnityWebRequest.Get(url);
@@ -127,10 +75,12 @@ public class APIClient : MonoBehaviour
         }
 
         paqueteData = paquetes;
+        request.Dispose();
+        yield return null;
     }
 
     //Get data for the charts
-    IEnumerator GetData()
+    public IEnumerator GetData()
     {
         string url = baseURL + "data";
         UnityWebRequest request = UnityWebRequest.Get(url);
@@ -147,10 +97,14 @@ public class APIClient : MonoBehaviour
         data.movimientos.Add(info["Movimientos"][count]);
         data.paquetesEnviados.Add(info["PaquetesEnviados"][count]);
         data.paquetesRecibidos.Add(info["PaquetesRecibidos"][count]);
+
+        request.Dispose();
+        yield return null;
+
     }
 
     //Start the model
-    IEnumerator Init()
+    public IEnumerator Init()
     {
         string url = baseURL + "init";
 
@@ -172,10 +126,13 @@ public class APIClient : MonoBehaviour
             Debug.LogError(req.error);
             yield break;
         }
+        req.Dispose();
+        yield return null;
+
     }
 
     //Make a step for the model
-    IEnumerator Step()
+    public IEnumerator Step()
     {
         string url = baseURL + "step";
         UnityWebRequest request = UnityWebRequest.Post(url, "");
@@ -186,10 +143,14 @@ public class APIClient : MonoBehaviour
             yield break;
         }
         count += 1;
+        request.Dispose();
+
+        yield return null;
+
     }
 
     //Stop the model
-    IEnumerator Stop()
+    public IEnumerator Stop()
     {
         string url = baseURL + "stop";
         UnityWebRequest request = UnityWebRequest.Post(url, "");
@@ -199,10 +160,14 @@ public class APIClient : MonoBehaviour
             Debug.LogError(request.error);
             yield break;
         }
+        request.Dispose();
+
+        yield return null;
+
     }
 
     //Resume the model
-    IEnumerator Continue()
+    public IEnumerator Continue()
     {
         string url = baseURL + "continue";
         UnityWebRequest request = UnityWebRequest.Post(url, "");
@@ -212,10 +177,14 @@ public class APIClient : MonoBehaviour
             Debug.LogError(request.error);
             yield break;
         }
+        request.Dispose();
+
+        yield return null;
+
     }
 
     //Reset the model with parameters
-    IEnumerator PostParams(ParameterModel pm)
+    public IEnumerator PostParams(ParameterModel pm)
     {
         string url = baseURL + "params";
 
@@ -232,6 +201,10 @@ public class APIClient : MonoBehaviour
             Debug.LogError(req.error);
             yield break;
         }
+        req.Dispose();
+
+        yield return null;
+
     }
 
 }
