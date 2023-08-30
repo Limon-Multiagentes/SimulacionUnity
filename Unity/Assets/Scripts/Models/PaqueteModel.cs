@@ -10,4 +10,6 @@ public class PaqueteModel
     public float peso;
     public float x;
     public float y;
+    public string surface;
+    public int robotId;
 }

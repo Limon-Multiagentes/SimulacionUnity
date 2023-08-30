@@ -16,7 +16,7 @@ public class APIClient : MonoBehaviour
     public List<RobotModel> robotData;
     public List<PaqueteModel> paqueteData;
     public DataModel data;
-    public int count = 0;
+    private int count = -1;
 
     //Get robots data
     public IEnumerator GetRobots()
@@ -41,6 +41,7 @@ public class APIClient : MonoBehaviour
             robot.id = info[i]["id"];
             robot.x = info[i]["x"];
             robot.y = info[i]["y"];
+            robot.isFast = info[i]["isFast"];
             robots.Add(robot);
         }
 
@@ -71,6 +72,8 @@ public class APIClient : MonoBehaviour
             paquete.id = info[i]["id"];
             paquete.x= info[i]["x"];
             paquete.y = info[i]["y"];
+            paquete.surface = info[i]["surface"];
+            paquete.robotId = info[i]["robotId"];
             paquetes.Add(paquete);
         }
 
@@ -110,8 +113,8 @@ public class APIClient : MonoBehaviour
 
         ParameterModel pm = new ParameterModel();
         pm.numRobots = 4;
-        pm.tasaEntrada = 10;
-        pm.tasaSalida = 30;
+        pm.tasaEntrada = 5;
+        pm.tasaSalida = 20;
 
         string json = JsonUtility.ToJson(pm);
         UnityWebRequest req = new UnityWebRequest(url, "POST");
@@ -126,6 +129,8 @@ public class APIClient : MonoBehaviour
             Debug.LogError(req.error);
             yield break;
         }
+        data = new DataModel();
+        count = -1;
         req.Dispose();
         yield return null;
 
@@ -201,6 +206,8 @@ public class APIClient : MonoBehaviour
             Debug.LogError(req.error);
             yield break;
         }
+        data = new DataModel();
+        count = -1;
         req.Dispose();
 
         yield return null;
