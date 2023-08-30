@@ -135,7 +135,7 @@ public class APIClient : MonoBehaviour
     public IEnumerator Step()
     {
         string url = baseURL + "step";
-        UnityWebRequest request = UnityWebRequest.Post(url, "");
+        UnityWebRequest request = UnityWebRequest.PostWwwForm(url, "");
         yield return request.SendWebRequest();
         if (request.result == UnityWebRequest.Result.ProtocolError || request.result == UnityWebRequest.Result.ConnectionError)
         {
@@ -153,7 +153,7 @@ public class APIClient : MonoBehaviour
     public IEnumerator Stop()
     {
         string url = baseURL + "stop";
-        UnityWebRequest request = UnityWebRequest.Post(url, "");
+        UnityWebRequest request = UnityWebRequest.PostWwwForm(url, "");
         yield return request.SendWebRequest();
         if (request.result == UnityWebRequest.Result.ProtocolError || request.result == UnityWebRequest.Result.ConnectionError)
         {
@@ -170,7 +170,7 @@ public class APIClient : MonoBehaviour
     public IEnumerator Continue()
     {
         string url = baseURL + "continue";
-        UnityWebRequest request = UnityWebRequest.Post(url, "");
+        UnityWebRequest request = UnityWebRequest.PostWwwForm(url, "");
         yield return request.SendWebRequest();
         if (request.result == UnityWebRequest.Result.ProtocolError || request.result == UnityWebRequest.Result.ConnectionError)
         {
