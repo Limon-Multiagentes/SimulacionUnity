@@ -5,23 +5,190 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638287020154888004
-    m_Hash: 231795447
+      ticks: 638289554444409541
+    m_Hash: 2247028887
   m_LockFileStatus:
     m_FilePath: C:/Users/USUARIO DELL/Documents/GitHub/SimulacionUnity/Unity/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638287020154974766
-    m_Hash: 3096241
+      ticks: 638289554444489543
+    m_Hash: 1885500308
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
-  m_LocalFileStatus: []
+  m_LocalFileStatus:
+  - m_FilePath: C:\Users\USUARIO DELL\Downloads\XCharts-Daemon-master\XCharts-Daemon-master/package.json
+    m_PathExists: 1
+    m_ContentTrackingEnabled: 1
+    m_ModificationDate:
+      serializedVersion: 2
+      ticks: 638285360540000000
+    m_Hash: 73609636
+  - m_FilePath: C:\Users\USUARIO DELL\Downloads\XCharts-Daemon-master\XCharts-Daemon-master
+    m_PathExists: 1
+    m_ContentTrackingEnabled: 1
+    m_ModificationDate:
+      serializedVersion: 2
+      ticks: 0
+    m_Hash: 0
 m_ProjectPath: C:/Users/USUARIO DELL/Documents/GitHub/SimulacionUnity/Unity/Packages
 m_EditorVersion: 2021.3.29f1 (204d6dc9ae1c)
 m_ResolvedPackages:
+- packageId: com.monitor1394.xcharts@https://github.com/XCharts-Team/XCharts.git#3.0
+  testable: 0
+  isDirectDependency: 1
+  version: 3.7.0
+  source: 5
+  resolvedPath: C:\Users\USUARIO DELL\Documents\GitHub\SimulacionUnity\Unity\Library\PackageCache\com.monitor1394.xcharts@9fc3ff862f
+  assetPath: Packages/com.monitor1394.xcharts
+  name: com.monitor1394.xcharts
+  displayName: XCharts
+  author:
+    name: monitor1394
+    email: 
+    url: 
+  category: chart
+  type: 
+  description: A charting and data visualization library for Unity.
+  status: 0
+  errors: []
+  versions:
+    all: []
+    compatible: []
+    verified: 
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - chart
+  - charts
+  - graph
+  - unity-chart
+  - data-visualization
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: git+https://github.com/XCharts-Team/XCharts.git
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
+- packageId: com.monitor1394.xcharts.daemon@file:C:\Users\USUARIO DELL\Downloads\XCharts-Daemon-master\XCharts-Daemon-master
+  testable: 0
+  isDirectDependency: 1
+  version: 1.0.1
+  source: 4
+  resolvedPath: C:\Users\USUARIO DELL\Downloads\XCharts-Daemon-master\XCharts-Daemon-master
+  assetPath: Packages/com.monitor1394.xcharts.daemon
+  name: com.monitor1394.xcharts.daemon
+  displayName: XCharts-Daemon
+  author:
+    name: monitor1394
+    email: 
+    url: 
+  category: chart
+  type: 
+  description: A daemon that ensures proper compilation after a version update for
+    XCharts.
+  status: 0
+  errors: []
+  versions:
+    all: []
+    compatible: []
+    verified: 
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - unity
+  - xcharts
+  - daemon
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
+- packageId: com.unity.2d.sprite@1.0.0
+  testable: 0
+  isDirectDependency: 1
+  version: 1.0.0
+  source: 2
+  resolvedPath: C:\Users\USUARIO DELL\Documents\GitHub\SimulacionUnity\Unity\Library\PackageCache\com.unity.2d.sprite@1.0.0
+  assetPath: Packages/com.unity.2d.sprite
+  name: com.unity.2d.sprite
+  displayName: 2D Sprite
+  author:
+    name: 
+    email: 
+    url: 
+  category: 2D
+  type: 
+  description: Use Unity Sprite Editor Window to create and edit Sprite asset properties
+    like pivot, borders and Physics shape
+  status: 0
+  errors: []
+  versions:
+    all:
+    - 1.0.0
+    compatible:
+    - 1.0.0
+    verified: 1.0.0
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - 2d
+  - sprite
+  - sprite editor window
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 1.0.0
+    nextVersion: 
 - packageId: com.unity.2d.tilemap@1.0.0
   testable: 0
   isDirectDependency: 1

@@ -615,7 +615,23 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: dUI_TextMeshPro
+    EmbeddedLinux: dUI_TextMeshPro
+    GameCoreScarlett: dUI_TextMeshPro
+    GameCoreXboxOne: dUI_TextMeshPro
+    LinuxHeadlessSimulation: dUI_TextMeshPro
+    Lumin: dUI_TextMeshPro
+    Nintendo Switch: dUI_TextMeshPro
+    PS4: dUI_TextMeshPro
+    PS5: dUI_TextMeshPro
+    Stadia: dUI_TextMeshPro
+    Standalone: dUI_TextMeshPro
+    WebGL: dUI_TextMeshPro
+    Windows Store Apps: dUI_TextMeshPro
+    XboxOne: dUI_TextMeshPro
+    iPhone: dUI_TextMeshPro
+    tvOS: dUI_TextMeshPro
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
@@ -639,7 +655,6 @@ PlayerSettings:
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
   enableRoslynAnalyzers: 1
-  selectedPlatform: 0
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 1
