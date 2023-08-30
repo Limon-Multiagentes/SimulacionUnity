@@ -16,7 +16,7 @@ public class APIClient : MonoBehaviour
     public List<RobotModel> robotData;
     public List<PaqueteModel> paqueteData;
     public DataModel data;
-    public int count = 0;
+    private int count = -1;
 
     //Get robots data
     public IEnumerator GetRobots()
@@ -127,6 +127,8 @@ public class APIClient : MonoBehaviour
             Debug.LogError(req.error);
             yield break;
         }
+        data = new DataModel();
+        count = -1;
         req.Dispose();
         yield return null;
 
@@ -202,6 +204,8 @@ public class APIClient : MonoBehaviour
             Debug.LogError(req.error);
             yield break;
         }
+        data = new DataModel();
+        count = -1;
         req.Dispose();
 
         yield return null;

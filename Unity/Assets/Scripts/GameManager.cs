@@ -146,7 +146,6 @@ public class GameManager : MonoBehaviour
         yield return apiClient.Init();
         yield return apiClient.GetRobots();
         yield return apiClient.GetPaquetes();
-        yield return apiClient.GetData();
 
         instantiateRobots();
 
@@ -202,7 +201,6 @@ public class GameManager : MonoBehaviour
         //makes the request to start and get all data
         yield return apiClient.GetRobots();
         yield return apiClient.GetPaquetes();
-        yield return apiClient.GetData();
 
         instantiateRobots();
 

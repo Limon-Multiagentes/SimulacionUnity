@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Lang: {fileID: 11400000, guid: 79b252423c47d4cf380e489ed55e05d4, type: 2}
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  m_FontSizeLv1: 24
-  m_FontSizeLv2: 22
-  m_FontSizeLv3: 20
-  m_FontSizeLv4: 18
+  m_TMPFont: {fileID: 0}
+  m_FontSizeLv1: 20
+  m_FontSizeLv2: 18
+  m_FontSizeLv3: 16
+  m_FontSizeLv4: 14
   m_AxisLineType: 0
   m_AxisLineWidth: 0.8
   m_AxisSplitLineType: 0

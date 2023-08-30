@@ -40,6 +40,11 @@ public class UiController : MonoBehaviour
     [SerializeField]
     public Slider sliderSalida;
 
+    //prefab and instance of chart canvas
+
+    [SerializeField]
+    private GameObject chartCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,5 +67,15 @@ public class UiController : MonoBehaviour
         numRobots.text = "Cantidad de robots: " + robotSlider.value;
         tasaEntrada.text = "Tasa de entrada: " + sliderEntrada.value;
         tasaSalida.text = "Tasa de salida: " + sliderSalida.value;
+    }
+
+    public void ToggleChartCanvas()
+    {
+
+        if (!chartCanvas.activeInHierarchy) //if it is about to activate build the charts
+        {
+            chartCanvas.GetComponent<ChartController>().CreateCharts();
+        }
+        chartCanvas.SetActive(!chartCanvas.activeInHierarchy);
     }
 }
