@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195d660f4fa4a7f4da4513d4f57c03c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moving: 0
+  bySteps: 0
+  surface: 
+  updated: 0
 --- !u!1001 &925301204258731773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -551,15 +555,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5313490348717481015, guid: dea37355671e6db469f13207225b8ea0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5313490348717481015, guid: dea37355671e6db469f13207225b8ea0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.6
+      value: 10.2
       objectReference: {fileID: 0}
     - target: {fileID: 5313490348717481015, guid: dea37355671e6db469f13207225b8ea0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5313490348717481015, guid: dea37355671e6db469f13207225b8ea0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -589,6 +593,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5411801396699935336, guid: dea37355671e6db469f13207225b8ea0, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411801396699935336, guid: dea37355671e6db469f13207225b8ea0, type: 3}
+      propertyPath: m_Constraints
+      value: 122
+      objectReference: {fileID: 0}
     - target: {fileID: 6066383780367435771, guid: dea37355671e6db469f13207225b8ea0, type: 3}
       propertyPath: m_Name
       value: Caja
@@ -596,6 +608,30 @@ PrefabInstance:
     - target: {fileID: 7437317828426386036, guid: dea37355671e6db469f13207225b8ea0, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159350835556436842, guid: dea37355671e6db469f13207225b8ea0, type: 3}
+      propertyPath: m_Size.x
+      value: 13.711493
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159350835556436842, guid: dea37355671e6db469f13207225b8ea0, type: 3}
+      propertyPath: m_Size.y
+      value: 14.50219
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159350835556436842, guid: dea37355671e6db469f13207225b8ea0, type: 3}
+      propertyPath: m_Size.z
+      value: 16.840313
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159350835556436842, guid: dea37355671e6db469f13207225b8ea0, type: 3}
+      propertyPath: m_Center.x
+      value: -0.08787036
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159350835556436842, guid: dea37355671e6db469f13207225b8ea0, type: 3}
+      propertyPath: m_Center.y
+      value: -0.40027332
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159350835556436842, guid: dea37355671e6db469f13207225b8ea0, type: 3}
+      propertyPath: m_Center.z
+      value: 0.092222214
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dea37355671e6db469f13207225b8ea0, type: 3}
@@ -6166,6 +6202,26 @@ PrefabInstance:
     - target: {fileID: 7077851701596792281, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351740243208748809, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351740243208748809, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621569421118838414, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
+      propertyPath: m_Size.x
+      value: 21.232365
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621569421118838414, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
+      propertyPath: m_Center.x
+      value: -0.05658451
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621569421118838414, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
+      propertyPath: m_Center.z
+      value: 0.0000019073485
       objectReference: {fileID: 0}
     - target: {fileID: 9020685399273490216, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
       propertyPath: m_Name

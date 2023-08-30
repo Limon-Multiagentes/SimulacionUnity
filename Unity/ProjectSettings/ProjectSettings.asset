@@ -616,22 +616,22 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: dUI_TextMeshPro
-    EmbeddedLinux: dUI_TextMeshPro
-    GameCoreScarlett: dUI_TextMeshPro
-    GameCoreXboxOne: dUI_TextMeshPro
-    LinuxHeadlessSimulation: dUI_TextMeshPro
-    Lumin: dUI_TextMeshPro
-    Nintendo Switch: dUI_TextMeshPro
-    PS4: dUI_TextMeshPro
-    PS5: dUI_TextMeshPro
-    Stadia: dUI_TextMeshPro
-    Standalone: dUI_TextMeshPro
-    WebGL: dUI_TextMeshPro
-    Windows Store Apps: dUI_TextMeshPro
-    XboxOne: dUI_TextMeshPro
-    iPhone: dUI_TextMeshPro
-    tvOS: dUI_TextMeshPro
+    Android: 
+    EmbeddedLinux: 
+    GameCoreScarlett: 
+    GameCoreXboxOne: 
+    LinuxHeadlessSimulation: 
+    Lumin: 
+    Nintendo Switch: 
+    PS4: 
+    PS5: 
+    Stadia: 
+    Standalone: 
+    WebGL: 
+    Windows Store Apps: 
+    XboxOne: 
+    iPhone: 
+    tvOS: 
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

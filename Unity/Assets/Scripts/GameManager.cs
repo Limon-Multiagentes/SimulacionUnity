@@ -40,8 +40,8 @@ public class GameManager : MonoBehaviour
     //data about the grid
     int cellSize = 64;
     int halfCellSize = 32;
-    float cintaHeight = 27.5f;
-    float estanteHeight = 37.5f;
+    float cintaHeight = 30f;
+    float estanteHeight = 42f;
 
     //isPaused?
     public bool paused = false;
@@ -245,9 +245,18 @@ public class GameManager : MonoBehaviour
             //if the package is already in the dictionary update its position
             if (paquetes.ContainsKey(pm.id))
             {
-                Vector3 position = CalculatePackagePosition(pm.x, pm.y, pm.surface.ToLower());
-                paquetes[pm.id].SetTarget(position);
-                paquetes[pm.id].surface = pm.surface.ToLower();
+                string surface = pm.surface.ToLower();
+                Vector3 position = CalculatePackagePosition(pm.x, pm.y, surface);
+                if(surface != paquetes[pm.id].surface)
+                {
+                    Debug.Log(surface);
+                    Debug.Log(paquetes[pm.id].surface);
+                    paquetes[pm.id].SetTargetBySteps(position, surface);
+                } else
+                {
+                    paquetes[pm.id].SetTarget(position);
+                }
+                paquetes[pm.id].surface = surface;
                 paquetes[pm.id].updated = true;
             }
             else //else create the package instantiate it behind the start of the conveyor belt and move it to the first position
