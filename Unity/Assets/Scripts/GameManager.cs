@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     int cellSize = 64;
     int halfCellSize = 32;
     float cintaHeight = 30f;
-    float estanteHeight = 42f;
+    float estanteHeight = 45f;
 
     //isPaused?
     public bool paused = false;
@@ -232,6 +232,7 @@ public class GameManager : MonoBehaviour
             RobotModel rm = apiClient.robotData[i];
             Vector3 newPosition = CalculateRobotPosition(rm.x, rm.y);
             robots[rm.id].SetTarget(newPosition);
+            robots[rm.id].isFast = rm.isFast;
         }
     }
 
@@ -247,16 +248,31 @@ public class GameManager : MonoBehaviour
             {
                 string surface = pm.surface.ToLower();
                 Vector3 position = CalculatePackagePosition(pm.x, pm.y, surface);
+                //if changing surface move by steps
                 if(surface != paquetes[pm.id].surface)
                 {
-                    Debug.Log(surface);
-                    Debug.Log(paquetes[pm.id].surface);
                     paquetes[pm.id].SetTargetBySteps(position, surface);
                 } else
                 {
                     paquetes[pm.id].SetTarget(position);
                 }
                 paquetes[pm.id].surface = surface;
+
+                //if on robot check if it should move faster
+                int robotId = pm.robotId;
+                if (robotId > 0)
+                {
+                    if (robots[robotId].isFast) {
+                        paquetes[pm.id].isFast = true;
+                    } else
+                    {
+                        paquetes[pm.id].isFast = false;
+                    }
+                } else
+                {
+                    paquetes[pm.id].isFast = false;
+                }
+
                 paquetes[pm.id].updated = true;
             }
             else //else create the package instantiate it behind the start of the conveyor belt and move it to the first position

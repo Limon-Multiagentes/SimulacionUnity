@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moving: 0
   bySteps: 0
+  isFast: 0
   surface: 
   updated: 0
 --- !u!1001 &925301204258731773
@@ -555,7 +556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5313490348717481015, guid: dea37355671e6db469f13207225b8ea0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5313490348717481015, guid: dea37355671e6db469f13207225b8ea0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6209,7 +6210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7351740243208748809, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
       propertyPath: m_Constraints
-      value: 112
+      value: 122
       objectReference: {fileID: 0}
     - target: {fileID: 8621569421118838414, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
       propertyPath: m_Size.x

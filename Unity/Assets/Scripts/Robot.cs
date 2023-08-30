@@ -7,8 +7,9 @@ public class Robot : MonoBehaviour
 {
 
     public bool moving = false;
+    public bool isFast = false;
     Vector3 target;
-    float distTreshold = 1f;
+    float distTreshold = 2.5f;
 
     float speed = 50.0f;
     float rotSpeed = 2.0f;
@@ -22,6 +23,7 @@ public class Robot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //if moving flag active
         if (moving)
         {
@@ -38,9 +40,15 @@ public class Robot : MonoBehaviour
                 direction = Vector3.Normalize(direction);
                 //set rotation
                 Quaternion lookRotation = Quaternion.LookRotation(direction);
+                //set speed
+                float robotSpeed = speed;
+                if (isFast)
+                {
+                    robotSpeed *= 2;
+                }
                 //update position and rotation
-                transform.position += direction * Time.deltaTime * speed;
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotSpeed);
+                transform.position += direction * Time.deltaTime * robotSpeed;
+                transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * rotSpeed);
             }
         }
     }
@@ -56,6 +64,14 @@ public class Robot : MonoBehaviour
     public void DestroyRobot()
     {
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Robot"))
+        {
+            Debug.Log("2 robots collided");
+        }
     }
 
 

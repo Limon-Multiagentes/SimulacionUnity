@@ -7,13 +7,15 @@ public class Paquete : MonoBehaviour
 {
 
     //variables for movement
-    float distTreshold = 1f;
+    float distTreshold = 2.5f;
     float speed = 50.0f;
-    float rotSpeed = 2.0f;
+    float rotSpeed = 1.0f;
     public bool moving = false;
     public bool bySteps = false;
     Vector3 target;
     Vector3 firstTarget;
+
+    public bool isFast = false;
 
     //the surface which the package is on top of
     public string surface;
@@ -75,14 +77,21 @@ public class Paquete : MonoBehaviour
             Vector3 direction = goal - transform.position;
             direction = Vector3.Normalize(direction);
 
+            //set speed
+            float packSpeed = speed;
+            if (isFast)
+            {
+                packSpeed *= 2;
+            }
+
             //update position and rotation
-            transform.position += direction * Time.deltaTime * speed;
+            transform.position += direction * Time.deltaTime * packSpeed;
 
             if (surface == "robot") //rotate if on the robot
             {
                 //set rotation
                 Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotSpeed);
+                transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * rotSpeed);
             }
 
         }

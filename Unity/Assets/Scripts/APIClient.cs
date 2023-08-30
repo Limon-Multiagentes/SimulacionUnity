@@ -41,6 +41,7 @@ public class APIClient : MonoBehaviour
             robot.id = info[i]["id"];
             robot.x = info[i]["x"];
             robot.y = info[i]["y"];
+            robot.isFast = info[i]["isFast"];
             robots.Add(robot);
         }
 
@@ -72,6 +73,7 @@ public class APIClient : MonoBehaviour
             paquete.x= info[i]["x"];
             paquete.y = info[i]["y"];
             paquete.surface = info[i]["surface"];
+            paquete.robotId = info[i]["robotId"];
             paquetes.Add(paquete);
         }
 
