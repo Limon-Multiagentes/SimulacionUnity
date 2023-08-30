@@ -52,5 +52,11 @@ public class Robot : MonoBehaviour
         target = position;
     }
 
+    //destroys robot
+    public void DestroyRobot()
+    {
+        Destroy(gameObject);
+    }
+
 
 }

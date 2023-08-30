@@ -1,5 +1,18 @@
 {
   "dependencies": {
+    "com.monitor1394.xcharts": {
+      "version": "https://github.com/XCharts-Team/XCharts.git#3.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "9fc3ff862f934e97b0cc519dff0c62ec73481c4a"
+    },
+    "com.monitor1394.xcharts.daemon": {
+      "version": "file:C:/Users/USUARIO DELL/Downloads/XCharts-Daemon-master/XCharts-Daemon-master",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

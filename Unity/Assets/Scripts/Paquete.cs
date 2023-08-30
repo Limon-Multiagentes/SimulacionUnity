@@ -79,4 +79,11 @@ public class Paquete : MonoBehaviour
         target = new Vector3(transform.position.x - 64, transform.position.y, transform.position.z);
     }
 
+    //destroys package
+    public void DestroyPackage()
+    {
+        Destroy(gameObject);
+    }
+
+
 }

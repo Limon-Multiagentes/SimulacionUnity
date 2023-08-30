@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     APIClient apiClient;
 
+    //UIController to control parameters
+    [SerializeField]
+    UiController uiController;
+
     //prefabs
     [SerializeField]
     GameObject robotPrefab;
@@ -35,24 +39,23 @@ public class GameManager : MonoBehaviour
 
     //data about the grid
     int cellSize = 64;
-    int width = 16;
-    int height = 16;
     int halfCellSize = 32;
     float cintaHeight = 27.5f;
     float estanteHeight = 37.5f;
 
+    //isPaused?
+    public bool paused = false;
+
 
     void Start()
     {
-        robots = new Dictionary<int, Robot>();
-        paquetes = new Dictionary<int, Paquete>();
-        //start the model on Start
-        finished = false;
-        StartCoroutine(StartModel());
+        InitializeModel();
     }
 
     void Update()
     {
+        if (paused) return;
+
         //if request is not finished return
         if (!finished)
         {
@@ -88,7 +91,55 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //start the model
+    //start the model for the first time
+    void InitializeModel()
+    {
+        //initialize the model
+        robots = new Dictionary<int, Robot>();
+        paquetes = new Dictionary<int, Paquete>();
+        finished = false;
+        StartCoroutine(StartModel());
+    }
+    
+    //alternate between pause and resume
+    public void togglePause()
+    {
+        if (!paused)
+        {
+            PauseModel();
+        } else
+        {
+            ResumeModel();
+        }
+    }
+
+    //pause the mdodel
+    void PauseModel()
+    {
+        paused = true;
+        StartCoroutine(StopModel());
+    }
+
+    //resume the model
+    void ResumeModel()
+    {
+        paused = false;
+        StartCoroutine(ContinueModel());
+    }
+
+
+    //restart the model and reset parameters
+    public void RestartModel()
+    {
+        paused = false;
+        finished = false;
+        DestroyAll();
+        robots = new Dictionary<int, Robot>();
+        paquetes = new Dictionary<int, Paquete>();
+        StartCoroutine(SendParams());
+    }
+
+    //make requests to start model and get data
     IEnumerator StartModel()
     {
         //makes the request to start and get all data
@@ -97,22 +148,15 @@ public class GameManager : MonoBehaviour
         yield return apiClient.GetPaquetes();
         yield return apiClient.GetData();
 
-        //instantiate robots at initial positions
-        for(int i = 0; i < apiClient.robotData.Count; i++)
-        {
-            RobotModel rm = apiClient.robotData[i];
-            Vector3 position = CalculateRobotPosition(rm.x, rm.y);
-            GameObject go = Instantiate(robotPrefab, position, Quaternion.identity);
-            Robot robot = go.GetComponent<Robot>();
-            robots.Add(rm.id, robot); 
-        }
+        instantiateRobots();
 
         //set the request as finished and robots to have finished moving
         finished = true;
         doneMoving = true;
     }
 
-    //makes a step
+   
+    //make requests for a step and get all data
     IEnumerator StepModel()
     {
         //make a step and get all data
@@ -121,15 +165,83 @@ public class GameManager : MonoBehaviour
         yield return apiClient.GetPaquetes();
         yield return apiClient.GetData();
 
+        updateRobots();
+        updatePackages();
+        eliminatePackages();
+
+        //set request as finished
+        finished = true;
+
+    }
+
+    //make request to stop model
+    IEnumerator StopModel()
+    {
+        yield return apiClient.Stop();
+    }
+
+    //make the request to continue the model
+    IEnumerator ContinueModel()
+    {
+        yield return apiClient.Continue();
+    }
+
+    //send the parameters to instantia
+    IEnumerator SendParams()
+    {
+        //create new parameter model with slider values
+        ParameterModel pm = new ParameterModel();
+        pm.numRobots =(int) uiController.robotSlider.value;
+        pm.tasaEntrada = (int) uiController.sliderEntrada.value;
+        pm.tasaSalida = (int) uiController.sliderSalida.value;
+
+        //post parameters
+        yield return apiClient.PostParams(pm);
+
+
+        //makes the request to start and get all data
+        yield return apiClient.GetRobots();
+        yield return apiClient.GetPaquetes();
+        yield return apiClient.GetData();
+
+        instantiateRobots();
+
+        //set the request as finished and robots to have finished moving
+        finished = true;
+        doneMoving = true;
+    }
+
+
+    //instantiate robots at initial positions
+    void instantiateRobots()
+    {
+        for (int i = 0; i < apiClient.robotData.Count; i++)
+        {
+            RobotModel rm = apiClient.robotData[i];
+            Vector3 position = CalculateRobotPosition(rm.x, rm.y);
+            GameObject go = Instantiate(robotPrefab, position, Quaternion.identity);
+            Robot robot = go.GetComponent<Robot>();
+            robots.Add(rm.id, robot);
+        }
+    }
+
+    //update robot positions
+    void updateRobots()
+    {
         //update robots positions
-        for (int i = 0; i < apiClient.robotData.Count; i++){
+        for (int i = 0; i < apiClient.robotData.Count; i++)
+        {
             RobotModel rm = apiClient.robotData[i];
             Vector3 newPosition = CalculateRobotPosition(rm.x, rm.y);
             robots[rm.id].SetTarget(newPosition);
         }
+    }
 
+    //update package positions and instantiate new packages
+    void updatePackages()
+    {
         //update package positions
-        for(int i = 0; i < apiClient.paqueteData.Count; i++)
+        for (int i = 0; i < apiClient.paqueteData.Count; i++)
         {
             PaqueteModel pm = apiClient.paqueteData[i];
             //if the package is already in the dictionary update its position
@@ -142,7 +254,7 @@ public class GameManager : MonoBehaviour
             }
             else //else create the package instantiate it behind the start of the conveyor belt and move it to the first position
             {
-                Vector3 position = CalculatePackagePosition(pm.x+1, pm.y, pm.surface.ToLower());
+                Vector3 position = CalculatePackagePosition(pm.x + 1, pm.y, pm.surface.ToLower());
                 GameObject go = Instantiate(paquetePrefab, position, Quaternion.identity);
                 Paquete paquete = go.GetComponent<Paquete>();
                 Vector3 newPosition = CalculatePackagePosition(pm.x, pm.y, pm.surface.ToLower());
@@ -153,37 +265,56 @@ public class GameManager : MonoBehaviour
             }
 
         }
+    }
+
+    //eliminate packages whose data is no longer received
+    void eliminatePackages()
+    {
 
         List<int> idsEliminate = new List<int>();
 
         //delete packages that were not updated
-        foreach(var item in paquetes)
+        foreach (var item in paquetes)
         {
             if (item.Value.updated) //reset updated status if updated
             {
                 item.Value.updated = false;
-            } else //if not updated it was deleted
+            }
+            else //if not updated it was deleted
             {
                 idsEliminate.Add(item.Key);
                 item.Value.GoOut();
             }
         }
 
-        foreach(int id in idsEliminate){
+        foreach (int id in idsEliminate)
+        {
             paquetes.Remove(id);
         }
 
-
-        //set request as finished
-        finished = true;
-
     }
+
+    //destroys all robots and packages 
+    void DestroyAll()
+    {
+        foreach(var item in robots)
+        {
+            item.Value.DestroyRobot();
+        }
+
+        foreach(var item in paquetes)
+        {
+            item.Value.DestroyPackage();
+        }
+    }
+
 
     //map robot MESA position to Unity position
     Vector3 CalculateRobotPosition(float x, float y)
     {
         return new Vector3(cellSize * x + halfCellSize, robotHeight / 2, cellSize * y + halfCellSize);
     }
+
     //map package MESA position to Unity position
     Vector3 CalculatePackagePosition(float x, float y, string superficie)
     {
