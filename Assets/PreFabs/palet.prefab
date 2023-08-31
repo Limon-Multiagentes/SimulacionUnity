@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4219386576628417497}
   - component: {fileID: 3471411076319282896}
   - component: {fileID: 86986634545541590}
-  - component: {fileID: 7351740243208748809}
-  - component: {fileID: 8621569421118838414}
+  - component: {fileID: 7221877578222657958}
+  - component: {fileID: 3866287330723083305}
   m_Layer: 0
   m_Name: palet
   m_TagString: Untagged
@@ -2979,7 +2979,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3589
+  m_VersionIndex: 3592
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3032,7 +3032,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 19bafa6d04a21734585884f4e0211554, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3062,7 +3062,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9020685399273490216}
   m_Mesh: {fileID: 0}
---- !u!54 &7351740243208748809
+--- !u!54 &7221877578222657958
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3076,9 +3076,9 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 32
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &8621569421118838414
+--- !u!65 &3866287330723083305
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
