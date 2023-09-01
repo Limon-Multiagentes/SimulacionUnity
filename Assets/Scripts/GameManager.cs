@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     //data about the grid
     int cellSize = 64;
     int halfCellSize = 32;
-    float cintaHeight = 28f;
+    float cintaHeight = 46f;
     float estanteHeight = 45f;
 
     //isPaused?
