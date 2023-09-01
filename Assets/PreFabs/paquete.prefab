@@ -658,6 +658,14 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.092222214
       objectReference: {fileID: 0}
+    - target: {fileID: 8745903212726873671, guid: dea37355671e6db469f13207225b8ea0, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745903212726873671, guid: dea37355671e6db469f13207225b8ea0, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dea37355671e6db469f13207225b8ea0, type: 3}
 --- !u!4 &5001840963674483402 stripped
@@ -678,11 +686,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3866287330723083305, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
       propertyPath: m_Size.x
-      value: 21.32324
+      value: 21.323244
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866287330723083305, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
+      propertyPath: m_Size.y
+      value: 3.093533
       objectReference: {fileID: 0}
     - target: {fileID: 3866287330723083305, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
       propertyPath: m_Center.x
       value: 0.0034181697
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866287330723083305, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
+      propertyPath: m_Center.y
+      value: -0.11176157
       objectReference: {fileID: 0}
     - target: {fileID: 3866287330723083305, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
       propertyPath: m_Center.z
@@ -6241,8 +6257,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7221877578222657958, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221877578222657958, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
       propertyPath: m_Constraints
-      value: 122
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 7351740243208748809, guid: 78cce69bffd2cb94591afe818b3dd65c, type: 3}
       propertyPath: m_AngularDrag

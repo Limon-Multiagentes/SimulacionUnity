@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     //robot height used to instantiate robot
     [SerializeField]
-    float robotHeight = 14.0f;
+    float robotHeight = 20.0f;
 
     [SerializeField]
     float packageHeight = 8.0f;
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     //data about the grid
     int cellSize = 64;
     int halfCellSize = 32;
-    float cintaHeight = 30f;
+    float cintaHeight = 46f;
     float estanteHeight = 45f;
 
     //isPaused?
