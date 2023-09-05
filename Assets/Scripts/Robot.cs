@@ -8,21 +8,26 @@ public class Robot : MonoBehaviour
 
     public bool moving = false;
     public bool isFast = false;
-    Vector3 target;
-    float distTreshold = 2.5f;
 
-    float speed = 50.0f;
-    float rotSpeed = 2.0f;
+    private Queue<Vector3> targets = new Queue<Vector3>();
+    private Vector3 currentTarget = Vector3.zero;
+
+    private float distTreshold = 5f;
+    private float speed = 50.0f;
+    private float rotSpeed = 2.0f;
+
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
 
         //if moving flag active
         if (moving)
@@ -57,7 +62,7 @@ public class Robot : MonoBehaviour
     public void SetTarget(Vector3 position)
     {
         moving = true;
-        target = position;
+        targets.Enqueue(position);
     }
 
     //destroys robot

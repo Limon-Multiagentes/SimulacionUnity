@@ -29844,7 +29844,7 @@ GameObject:
   - component: {fileID: 7441294566847763005}
   m_Layer: 0
   m_Name: Robot
-  m_TagString: Untagged
+  m_TagString: Robot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29890,8 +29890,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1499841, y: 0.5158773, z: 1.4247345}
-  m_Center: {x: 0.0059036827, y: 0.024384383, z: 0.0012582397}
+  m_Size: {x: 1.0356598, y: 0.49688795, z: 1.287535}
+  m_Center: {x: 0.0025252914, y: 0.014889783, z: 0.009294204}
 --- !u!54 &7441294566847763005
 Rigidbody:
   m_ObjectHideFlags: 0
