@@ -12,4 +12,9 @@ public class PaqueteModel
     public float y;
     public string surface;
     public int robotId;
+
+    public object Clone()
+    {
+        return this.MemberwiseClone();
+    }
 }

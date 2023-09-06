@@ -16,7 +16,7 @@ public class APIClient : MonoBehaviour
     public List<RobotModel> robotData;
     public List<PaqueteModel> paqueteData;
     public DataModel data;
-    private int count = -1;
+    public int count = -1;
 
     //Get robots data
     public IEnumerator GetRobots()
