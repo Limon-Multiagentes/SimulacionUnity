@@ -145,7 +145,11 @@ public class GameManager : MonoBehaviour
     //restart the model and reset parameters
     public void RestartModel()
     {
-        paused = true;
+        if (!paused)
+        {
+            return;
+        }
+
         finished = false;
         count = -1;
         DestroyAll();
