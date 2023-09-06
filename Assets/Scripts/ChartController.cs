@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -85,7 +86,8 @@ public class ChartController : MonoBehaviour
         chart.RemoveData();
         chart.AddSerie<Line>("line");
         //Add data
-        for (int i = 0; i < data.Count; i++)
+        int top = gm.count;
+        for (int i = 0; i < top; i++)
         {
             chart.AddData(0, i, data[i]);
         }

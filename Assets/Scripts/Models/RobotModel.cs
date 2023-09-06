@@ -11,4 +11,9 @@ public class RobotModel
     public float x;
     public float y;
     public bool isFast;
+
+    public object Clone()
+    {
+        return this.MemberwiseClone();
+    }
 }

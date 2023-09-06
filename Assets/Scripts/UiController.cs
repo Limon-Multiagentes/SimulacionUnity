@@ -40,6 +40,12 @@ public class UiController : MonoBehaviour
     [SerializeField]
     public Slider sliderSalida;
 
+    [SerializeField]
+    private Image restartButton;
+
+    [SerializeField]
+    private Image restartImage;
+
     //prefab and instance of chart canvas
 
     [SerializeField]
@@ -57,9 +63,13 @@ public class UiController : MonoBehaviour
         //adjust button icon
         if (gm.paused)
         {
+            restartButton.color = new Color(1, 1, 1);
+            restartImage.color = new Color(16.0f / 255, 219.0f / 255, 239.0f / 255);
             prButton.sprite = resumeSprite;
         } else
         {
+            restartButton.color = new Color(4.0f / 5, 4.0f / 5, 4.0f / 5);
+            restartImage.color = new Color(4.0f / 255, 143.0f / 255, 157.0f / 255);
             prButton.sprite = pauseSprite;
         }
 

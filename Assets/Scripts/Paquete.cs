@@ -7,7 +7,8 @@ public class Paquete : MonoBehaviour
 {
 
     //variables for movement
-    float distTreshold = 2.5f;
+    private float distTreshold = 6f;
+
     float speed = 50.0f;
     float rotSpeed = 1.0f;
     public bool moving = false;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     //robot height used to instantiate robot
     [SerializeField]
-    float robotHeight = 20.0f;
+    float robotHeight = 18.0f;
 
     [SerializeField]
     float packageHeight = 8.0f;
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
     bool finished = false;
     
     //have all robots finished moving?
-    bool doneMoving = false;
+    bool doneMoving = true;
     
     //maps id to robot script
     Dictionary<int, Robot> robots;
@@ -40,12 +41,15 @@ public class GameManager : MonoBehaviour
     //data about the grid
     int cellSize = 64;
     int halfCellSize = 32;
-    float cintaHeight = 46f;
-    float estanteHeight = 45f;
+    float cintaHeight = 48f;
+    float estanteHeight = 47f;
 
     //isPaused?
     public bool paused = false;
 
+    public int count = -1;
+    Queue<List<RobotModel>> robotModels;
+    Queue<List<PaqueteModel>> paqueteModels; 
 
     void Start()
     {
@@ -56,19 +60,26 @@ public class GameManager : MonoBehaviour
     {
         if (paused) return;
 
-        //if request is not finished return
-        if (!finished)
+        //if request is not finished 
+        if (finished)
+        {
+            //set flags to false and make the next step
+            finished = false;
+            StartCoroutine(StepModel());
+        }
+
+        if(count >= apiClient.count)
         {
             return;
         }
 
         //if objects have finished moving
-        if (doneMoving)
+        if (doneMoving && robotModels.Count > 0)
         {
-            //set flags to false and make the next step
-            finished = false;
             doneMoving = false;
-            StartCoroutine(StepModel());
+            updateRobots(robotModels.Dequeue());
+            updatePackages(paqueteModels.Dequeue());
+            eliminatePackages();
         } else
         {
             //if at least one robot is still moving return
@@ -88,6 +99,7 @@ public class GameManager : MonoBehaviour
             }
             //all robots have finished moving
             doneMoving = true;
+            count++;
         }
     }
 
@@ -97,6 +109,8 @@ public class GameManager : MonoBehaviour
         //initialize the model
         robots = new Dictionary<int, Robot>();
         paquetes = new Dictionary<int, Paquete>();
+        robotModels = new Queue<List<RobotModel>>();
+        paqueteModels = new Queue<List<PaqueteModel>>();
         finished = false;
         StartCoroutine(StartModel());
     }
@@ -131,11 +145,18 @@ public class GameManager : MonoBehaviour
     //restart the model and reset parameters
     public void RestartModel()
     {
-        paused = false;
+        if (!paused)
+        {
+            return;
+        }
+
         finished = false;
+        count = -1;
         DestroyAll();
         robots = new Dictionary<int, Robot>();
         paquetes = new Dictionary<int, Paquete>();
+        robotModels = new Queue<List<RobotModel>>();
+        paqueteModels = new Queue<List<PaqueteModel>>();
         StartCoroutine(SendParams());
     }
 
@@ -164,9 +185,9 @@ public class GameManager : MonoBehaviour
         yield return apiClient.GetPaquetes();
         yield return apiClient.GetData();
 
-        updateRobots();
-        updatePackages();
-        eliminatePackages();
+        //add data to queues
+        robotModels.Enqueue(apiClient.robotData);
+        paqueteModels.Enqueue(apiClient.paqueteData);
 
         //set request as finished
         finished = true;
@@ -207,6 +228,7 @@ public class GameManager : MonoBehaviour
         //set the request as finished and robots to have finished moving
         finished = true;
         doneMoving = true;
+        paused = false;
     }
 
 
@@ -224,12 +246,12 @@ public class GameManager : MonoBehaviour
     }
 
     //update robot positions
-    void updateRobots()
+    void updateRobots(List<RobotModel> robotData)
     {
         //update robots positions
-        for (int i = 0; i < apiClient.robotData.Count; i++)
+        for (int i = 0; i < robotData.Count; i++)
         {
-            RobotModel rm = apiClient.robotData[i];
+            RobotModel rm = robotData[i];
             Vector3 newPosition = CalculateRobotPosition(rm.x, rm.y);
             robots[rm.id].SetTarget(newPosition);
             robots[rm.id].isFast = rm.isFast;
@@ -237,12 +259,12 @@ public class GameManager : MonoBehaviour
     }
 
     //update package positions and instantiate new packages
-    void updatePackages()
+    void updatePackages(List<PaqueteModel> paqueteData)
     {
         //update package positions
-        for (int i = 0; i < apiClient.paqueteData.Count; i++)
+        for (int i = 0; i < paqueteData.Count; i++)
         {
-            PaqueteModel pm = apiClient.paqueteData[i];
+            PaqueteModel pm = paqueteData[i];
             //if the package is already in the dictionary update its position
             if (paquetes.ContainsKey(pm.id))
             {
@@ -320,14 +342,17 @@ public class GameManager : MonoBehaviour
     //destroys all robots and packages 
     void DestroyAll()
     {
-        foreach(var item in robots)
+
+        GameObject[] robs = GameObject.FindGameObjectsWithTag("Robot");
+        foreach (var robot in robs)
         {
-            item.Value.DestroyRobot();
+            GameObject.Destroy(robot);
         }
 
-        foreach(var item in paquetes)
+        GameObject[] packs = GameObject.FindGameObjectsWithTag("Paquete");
+        foreach (var p in packs)
         {
-            item.Value.DestroyPackage();
+            GameObject.Destroy(p);
         }
     }
 

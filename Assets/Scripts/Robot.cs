@@ -8,21 +8,23 @@ public class Robot : MonoBehaviour
 
     public bool moving = false;
     public bool isFast = false;
-    Vector3 target;
-    float distTreshold = 2.5f;
 
-    float speed = 50.0f;
-    float rotSpeed = 2.0f;
+    private Vector3 target;
+
+    private float distTreshold = 6f;
+    private float speed = 50.0f;
+    private float rotSpeed = 2.0f;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
+
 
         //if moving flag active
         if (moving)
